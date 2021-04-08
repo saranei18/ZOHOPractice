@@ -1,0 +1,34 @@
+#include<stdio.h>
+void main()
+{
+    int h;
+    scanf("%d",&h);
+    int r=1;
+    int ran=h;
+    int flag=0;
+    for(int i=1;i<=ran;i++)
+    {
+        for(int j=i;j<ran;j++)
+        {
+            printf("    ");
+        }
+        if(flag==1)
+        {
+            for(int k=h;k>=r;k--)
+            {
+                printf("%d ",k);
+            }
+        }
+        else
+        {
+            for(int k=r;k<=h;k++)
+            {
+                printf("%d ",k);
+            }
+        }
+        flag=!flag;
+        r=h+1;
+        h=h+ran;
+        printf("\n");
+    }
+}
