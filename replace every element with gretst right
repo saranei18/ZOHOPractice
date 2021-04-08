@@ -1,0 +1,26 @@
+#include<stdio.h>
+int a[6]={16,17,4,3,5,2};
+int findmax(int n,int i)
+{
+   int max=a[i];
+    i=i+1;
+    for(;i<n;i++)
+    {
+        if(a[i]>max)
+        {
+            max=a[i];
+        }
+    }
+    return max;
+}
+
+int main()
+{
+    for(int i=0;i<5;i++)
+    {
+        int max=findmax(5,i+1);
+        a[i]=max;
+    }
+    a[5]=-1;
+    printf("%d %d %d %d %d %d",a[0],a[1],a[2],a[3],a[4],a[5]);
+}
