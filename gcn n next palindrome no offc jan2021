@@ -1,0 +1,22 @@
+#include<stdio.h>
+void main()
+{
+    int a;
+    scanf("%d",&a);
+    for(int i=a+1;;i++)
+    {
+        int n=i;
+        int res=0;
+        while(n)
+        {
+            int b=n%10;
+            res=res*10+b;
+            n=n/10;
+        }
+        if(res==i)
+        {
+            printf("%d",res);
+            break;
+        }
+    }
+}
