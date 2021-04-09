@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+    char a[]={"PROGRAM"};
+    int len=strlen(a);
+    for(int i=0;i<len;i++)
+    {
+        for(int j=0;j<len;j++)
+        {
+            if(i==j||(i+j)==len-1)
+            {
+                printf("%c",a[i]);
+            }else
+            printf(" ");
+        }
+        printf("\n");
+    }
+}
