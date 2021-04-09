@@ -1,0 +1,59 @@
+#include<stdio.h>
+#include<string.h>
+
+void main()
+{
+    int c=0;
+    char a[20];
+    fgets(a,20,stdin);
+    char b[255]={0};
+    int n=strlen(a);
+    for(int i=0;i<n;i++)
+    {
+        b[a[i]]++;
+    }
+    jump:
+    for(int i=0;i<255;i++)
+    {
+        b[i]=0;
+    }
+    for(int i=0;i<n;i++)
+    {
+        b[a[i]]++;
+    }
+    for(int i=0;i<n;i++)
+    {
+        if(b[a[i]]>1)
+        {
+            for(int j=n;j>i;j--)
+            {
+                if(a[j]==a[i])
+                {
+                    if(a[j]=='Z')
+                    {
+                        b[a[j]]--;
+                        a[j]='A';
+                        a[a[j]]++;
+                        break;
+                    }
+                    if(a[j]=='9')
+                    {
+                        b[a[j]]--;
+                        a[j]='0';
+                        b[a[j]]++;
+                        break;
+                    }
+                    else
+                    {
+                    a[j]=a[j]+1;
+                    b[a[i]]--;
+                    break;
+                    }
+                }
+            }
+            goto jump;
+        }
+    }
+    
+    printf("%s",a);
+}
