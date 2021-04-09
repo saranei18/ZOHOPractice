@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<string.h>
+void swap(char *k1,char *k2)
+{
+    char t;
+    t=*k1;
+    *k1=*k2;
+    *k2=t;
+}
+void main()
+{
+    char a[]={"Rank"};
+    int n=strlen(a)-2;
+    int i=1;
+    while(i<=n)
+    {
+        swap(&a[i],&a[i+1]);
+        
+        swap(&a[n],&a[n-1]);
+        i++;n--;
+    }
+    swap(&a[i],&a[n]);
+    printf("%d %d %s ",i,n,a);
+}
