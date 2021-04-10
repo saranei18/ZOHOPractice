@@ -1,0 +1,78 @@
+#include<stdio.h>
+void main()
+{
+    int sum=0;
+    int a[9][9];
+    for(int i=0;i<9;i++)
+    {
+        for(int j=0;j<9;j++)
+        {
+            a[i][j]=1;
+        }
+    }
+    a[3][5]=0;
+   for(int i=4;i<9;i++)//right
+   {
+       if(a[4][i]==1)
+       {
+           sum++;
+       }
+       else break;
+   }
+   sum--;
+   for(int i=4;i>0;i--)//left
+   {
+       if(a[4][i]==1)sum++;
+       else break;
+   }
+   sum--;
+   for(int i=4;i<9;i++)
+   {
+       if(a[i][4]==1)sum++;//up
+       else break;
+   }
+   sum--;
+   for(int i=4;i>0;i--)
+   {
+       if(a[i][4]==1)sum++;//down
+       else break;
+   }
+   sum--;
+   int i=4,j=4;
+   while(i<9&&j>0)
+   {
+       if(a[j][i]==1)sum++;
+       else break;
+       i++;j--;
+   }
+    sum--;
+   i=4,j=4;
+   while(i>0&&j<9)
+   {
+       if(a[i][j]==1)sum++;
+       i--;j++;
+   }
+   sum--;
+   i=4,j=4;
+   while(i<9&&j<9)
+   {
+       if(a[i][j]==1)
+       sum++;
+              else break;
+
+       i++;;
+       j++;
+   }
+   sum--;
+   i=4,j=4;
+   while(i>0&&j>0)
+   {
+       if(a[i][j]==1)sum++;
+              else break;
+
+       i--;j--;
+   }
+   sum--;
+
+    printf("%d",sum);
+}
