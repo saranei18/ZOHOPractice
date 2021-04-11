@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+    char a[]={"adsfghij"};
+    char b[]={"asdfgijh"};
+    for(int i=0;i<strlen(a);i++)
+    {
+        if(a[i]!=b[i])
+        {
+            int j=i;
+            while(a[i]!=b[i])
+            {
+                i++;
+            }
+            for(int k=j;k<i;k++)
+            {
+                printf("%c",a[k]);
+            }
+            printf(" - ");
+            for(int k=j;k<i;k++)
+            {
+                printf("%c",b[k]);
+            }
+            printf("\n");
+        }
+        
+    }
+}
