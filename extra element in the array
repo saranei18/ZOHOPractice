@@ -1,0 +1,15 @@
+#include<stdio.h>
+void main()
+{
+    int a[]={10,20,30,12,5};
+    int b[]={10,5,30,20};
+    int ft[100]={0};
+    int st1[100]={0};
+    for(int i=0;i<5;i++)ft[a[i]]++;
+    for(int i=0;i<4;i++)st1[b[i]]++;
+    for(int i=0;i<100;i++)
+    {
+        if(ft[i]!=st1[i])
+        printf("%d is the extra element in the array 1 ",i);
+    }
+}
