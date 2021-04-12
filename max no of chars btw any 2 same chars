@@ -1,0 +1,54 @@
+using namespace std;
+#include<iostream>
+#include<string.h>
+#include<vector>
+#include<algorithm>
+int main()
+{
+    vector<int>v1;
+    int b[255]={0};
+    char a[]={"abcacbb"};
+    for(int i=0;i<strlen(a);i++)
+    {
+        b[a[i]]++;
+    }
+    for(int i=0;i<strlen(a);i++)
+    {
+        int c=i;
+        int j=i;
+        int k=0;
+        if(b[a[i]]>1)
+        {
+            for(j=i;j<strlen(a);j++)
+            {
+                if(a[j]==a[i])
+                {
+                    k=j;
+                }
+            }
+            v1.push_back(k-c-1);
+        }
+    }
+    printf("%d",*max_element(v1.begin(),v1.end()));
+}
+
+
+
+using namespace std;
+#include<iostream>
+#include<string.h>
+#include<algorithm>
+int main()
+{
+    char a[]={"abca"};
+    int fc[256]={0};
+    int res=0;
+    for(int i=0;i<strlen(a);i++)
+    {
+        if(fc[(int)a[i]]==0)fc[(int)a[i]]=i;
+        
+        else
+        res=max(res,i-fc[(int)a[i]]-1);
+    }
+    printf("%d",res);
+}
