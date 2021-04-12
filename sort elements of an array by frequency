@@ -1,0 +1,34 @@
+#include<stdio.h>
+void main()
+{
+    int a[]={2,2,3,4,5,12,2,3,3,3,12};
+    int fh[100]={0};
+    int sh[100]={0};
+    int th[100]={0};
+    for(int i=0;i<11;i++)
+    {
+        fh[a[i]]++;
+        sh[a[i]]++;
+    }
+    for(int i=0;i<100;i++)
+    {
+        for(int j=i+1;j<100;j++)
+        {
+            if(sh[i]<sh[j])
+            {
+                int t;
+                t=sh[i];
+                sh[i]=sh[j];
+                sh[j]=t;
+            }
+        }
+    }
+    for(int i=0;i<100;i++)
+    {
+        if(sh[i]==0)break;
+        for(int j=i+1;j<100;j++)
+        {
+            if(sh[i]==fh[j])printf("%d ",j);
+        }
+    }
+}
