@@ -1,0 +1,45 @@
+using namespace std;
+#include<iostream>
+#include<string.h>
+#include<algorithm>
+
+int main()
+{
+    char a[]={"forgeeksskeegfor"};
+    int m=strlen(a);
+    int dp[m][m];
+    for(int i=0;i<strlen(a);i++)
+    {
+        dp[i][i]=1;
+    }
+    for(int i=0;i<strlen(a)-1;i++)
+    {
+        if(a[i]==a[i+1])
+        {
+            dp[i][i+1]=1;
+        }
+        else dp[i][i+1]=0;
+    }
+    
+    
+    //nested loop
+    int max=2,start=0;
+    for(int k=3;k<=strlen(a);k++)
+    {
+        for(int i=0;i<strlen(a)-k+1;i++)
+        {
+            int j=i+k-1;
+            if(a[i]==a[j]&&dp[i+1][j-1]==1)
+            dp[i][j]=1;
+            else
+            dp[i][j]=0;
+            
+            if(k>max)
+            {
+                max=k;
+                start=i;
+            }
+        }
+    }
+    printf("%s",a+start);
+}
