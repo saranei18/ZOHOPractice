@@ -1,0 +1,47 @@
+#include<iostream>
+#include<vector>
+#include<string.h>
+using namespace std;
+
+int main()
+{
+    vector<int>v1,v2;
+    char a[][10]={"zoho","eating","watching","pogo","loving","mango"};
+    char b[][10]={"zoho","eating","watching","pogo","loving","mango"};
+
+    int n=6;
+    for(int i=0;i<n;i++)
+    {
+        v1.push_back(strlen(a[i]));
+    }
+    for(int i=0;i<v1.size();i++)
+    {
+        for(int j=i+1;j<v1.size();j++)
+        {
+            if(v1[i]>v1[j])
+            {
+                int t;
+                t=v1[i];
+                v1[i]=v1[j];
+                v1[j]=t;
+            }
+        }
+    }
+    for(int i=0;i<v1.size();i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(v1[i]==strlen(a[j]))
+            {
+                v2.push_back(j);
+                a[j][0]='\0';
+            }
+        }
+    }
+    int h=v2.size()-1;
+    for(int i=0;i<=h;i++)
+    {
+        printf("%s %s  \n",b[v2[i]],b[v2[h]]);
+        h--;
+    }
+}
