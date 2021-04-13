@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+#include<string.h>
+#include<vector>
+void swap(int i,int j,char a[])
+{
+    int h=j-1;
+    for(int k=i;k<=h;k++)
+    {
+        char t=a[k];
+        a[k]=a[h];
+        a[h]=t;
+        h--;
+    }
+}
+int main()
+{
+    char a[]={"one two three"};
+    for(int i=0;i<strlen(a);i++)
+    {
+        int j=i;
+        while(a[i]!=32&&i<strlen(a))
+        {
+            i++;
+        }
+        swap(j,i,a);
+    }
+    swap(0,strlen(a),a);
+    printf("%s",a);
+}
