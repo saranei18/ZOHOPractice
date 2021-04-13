@@ -1,0 +1,17 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+    int a[]={7,2,5,8,1};
+    vector<int>v1;
+    v1.push_back(a[0]);
+    for(int i=1;i<5;i=i+2)
+    {
+        if(a[i]+a[i+1]==a[0]||a[i]-a[i+1]==a[0])v1.push_back(a[0]);
+        else {printf("NO "),exit(0);}
+    }
+    for(int i=0;i<v1.size();i++)printf("%d",v1[i]);
+}
