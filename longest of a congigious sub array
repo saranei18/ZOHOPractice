@@ -1,0 +1,19 @@
+#include<iostream>
+#include<vector>
+int main()
+{
+    int a[]={1,2,3,1,4,5,2,3,6};
+    int k=3;
+    int max=0;
+    for(int i=0;i<9-2;i++)
+    {
+        int j=i;
+        max=0;
+        while(j<i+k)
+        {
+            if(a[j]>max)max=a[j];
+            j++;
+        }
+        printf("%d ",max);
+    }
+}
