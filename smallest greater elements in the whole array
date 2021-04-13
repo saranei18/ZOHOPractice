@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+#include<vector>
+
+int main()
+{
+    int a[]={13,6,7,12};//6,7,12,13
+    vector<int>v1={13,6,7,12};
+    for(int i=0;i<4;i++)
+    {
+        for(int j=i+1;j<4;j++)
+        {
+            if(a[i]>a[j])
+            {
+                int t=a[i];
+                a[i]=a[j];
+                a[j]=t;
+            }
+        }
+    }
+    for(int i=0;i<4;i++)
+    {
+        if(a[3]==v1[i])
+        {
+            v1[i]=0;
+            break;
+        }
+    }
+    for(int i=0;i<4;i++)
+    {
+        if(v1[i]==0)continue;
+        for(int j=0;j<4;j++)
+        {
+            if(v1[i]==a[j]){
+            v1[i]=a[j+1];break;}
+            
+        }
+    }
+    printf("%d %d %d %d",v1[0],v1[1],v1[2],v1[3]);
+}
