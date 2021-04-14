@@ -1,0 +1,20 @@
+#include<stdio.h>
+long long convert(int n)
+{
+    int i=1;
+    long long bin=0;
+    int rem=0;
+    while(n)
+    {
+        rem=n%2;
+        bin+=rem*i;
+        i=i*10;
+        n=n/2;
+    }
+    return bin;
+}
+void main()
+{
+    int n=19;
+    printf("%lld",convert(n));
+}
