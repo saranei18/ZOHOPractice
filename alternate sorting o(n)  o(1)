@@ -1,0 +1,22 @@
+#include<stdio.h>
+void main()
+{
+    int a[]={1,2,3,4,5,7};
+    int maxi=5;
+    int me =a[5]+1;
+    int mini=0;
+    for(int i=0;i<6;i++)
+    {
+        if(i%2==0)
+        {
+            a[i]=a[i]+a[maxi]%me*me;
+            maxi--;
+        }
+        else
+        {
+            a[i]=a[i]+a[mini]%me*me;
+            mini++;
+        }
+    }
+    printf("%d %d %d %d %d %d ",a[0]/me,a[1]/me,a[2]/me,a[3]/me,a[4]/me,a[5]/me);
+}
