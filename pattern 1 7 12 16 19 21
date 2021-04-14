@@ -1,0 +1,23 @@
+#include<stdio.h>
+void main()
+{
+    int a=6;
+    int b=a;
+    int s=a/2;
+    for(int i=1;i<=6;i++)
+    {
+        if(i<s)
+        {
+            printf(" ");
+        }
+        int k=i;
+        while(b>=i)
+        {
+            printf("%d ",k);
+            k=k+b;
+            b--;
+        }
+        b=a;
+        printf("\n");
+    }
+}
