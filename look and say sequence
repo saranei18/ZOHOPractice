@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+    int n;
+    scanf("%d",&n);
+    char str[100]="1";
+    char ans[100];
+    int count=0,ind=0,i,j;
+    printf("%s\n",str);
+    for(int i=0;i<n;i++)
+    {
+        count=0;ind=0;
+        for(i=j=0;j<str[j]!=NULL;j++)
+        {
+            if(str[i]==str[j])
+            count++;
+            else
+            {
+                ans[ind++]=count+48;
+                ans[ind++]=str[i];
+                i=j;
+                count=1;
+            }
+        }
+        ans[ind++]=count+48;
+        ans[ind++]=str[i];
+        ans[ind]=NULL;
+        printf("%s\n",ans);
+        strcpy(str,ans);
+    }
+}
