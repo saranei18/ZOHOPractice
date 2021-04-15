@@ -1,0 +1,57 @@
+#include<iostream>
+#include<stack>
+using namespace std;
+#include<string.h>
+stack<int>s1,s2;
+int check(int i,int j,int a[])
+{
+    int c1=a[i];
+    int c2=a[j];
+    int k1=a[j];
+    int k2=a[i];
+    while(k1)
+    {
+        s1.push(k1%10);
+        k1=k1/10;
+    }
+    while(!s1.empty())
+    {
+        c1=c1*10+s1.top();
+        s1.pop();
+    }
+    while(k2)
+    {
+        s1.push(k2%10);
+        k2=k2/10;
+    }
+    while(!s1.empty())
+    {
+        c2=c2*10+s1.top();
+        s1.pop();
+    }
+    if(c1>c2)return 0;
+    else return 1;
+}
+
+int main()
+{
+    int a[]={3,30,34,5,9};
+    int size=sizeof(a)/sizeof(a[0]);
+    for(int i=0;i<size;i++)
+    {
+        for(int j=i+1;j<size;j++)
+        {
+            int chk=check(i,j,a);
+            if(chk==1)
+            {
+                int t=a[i];
+                a[i]=a[j];
+                a[j]=t;
+            }
+        }   
+    }
+    for(int i=0;i<size;i++)
+    {
+        printf("%d ",a[i]);
+    }
+}
