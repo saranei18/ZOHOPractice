@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<string.h>
+int r1,c1;
+void check_island(int a[r1][c1],int i,int j,int r,int c)
+{
+    if(i<0||i>=r||j<0||j>=c||a[i][j]!=1)
+    return;
+    a[i][j]=2;
+    check_island(a,i+1,j,r,c);
+    check_island(a,i,j+1,r,c);
+    check_island(a,i-1,j,r,c);
+    check_island(a,i,j-1,r,c);
+}
+
+int main()
+{
+    int count=0;
+    int a[4][5]={{0,0,0,0,0},
+                 {0,0,0,0,0},
+                 {0,0,1,0,0},
+                 {0,0,0,1,1}};
+    int r=sizeof(a)/sizeof(a[0]);
+    int c=sizeof(a[0])/sizeof(int);
+    if(r==0)return 0;
+    
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            if(a[i][j]==1)
+            {
+                r1=r;c1=c;
+                check_island(a,i,j,r,c);
+                count++;
+            }
+            
+        }
+    }
+    printf("%d",count);
+}
