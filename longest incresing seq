@@ -1,27 +1,25 @@
 #include<stdio.h>
-void main()
+int main()
 {
-    int a[]={5,7,8,1,9};
-    int lis[]={1,1,1,1,1};
-    for(int i=1;i<5;i++)
+    int n;
+    scanf("%d",&n);
+    int a[n];
+    int lis[n];
+    for(int i=0;i<n;i++)
     {
-        for(int j=0;j<i;j++)
+        lis[i]=1;
+    }
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    for(int i=1;i<n;i++)
+    {
+        for(int j=0;j<=i;j++)
         {
             if(a[i]>a[j]&&lis[i]<=lis[j])
-            {
-                lis[i]=1+lis[j];
-            }
+            lis[i]=1+lis[j];
         }
     }
-    int k=lis[4]+1;
-    for(int i=4;i>=0;i--)
-    {
-        if((k-1)==lis[i])
-        {
-            printf("%d",a[i]);
-            
-        }
-        k=lis[i];
-    }
+    printf("%d",lis[n-1]);
 }
-https://www.youtube.com/watch?v=mouCn3CFpgg&t=661s
