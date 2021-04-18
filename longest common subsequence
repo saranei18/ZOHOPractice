@@ -1,0 +1,33 @@
+#include<iostream>
+#include<algorithm>
+#include<string.h>
+using namespace std;
+int main()
+{
+    char a[20];
+    char b[20];
+    scanf("%s",a);
+    scanf("%s",b);
+    int s1=strlen(a);
+    int s2=strlen(b);
+    int dp[s1+1][s2+1];
+    for(int i=0;i<=s1;i++)
+    {
+        dp[i][0]=0;
+    }
+    for(int i=0;i<=s2;i++)
+    {
+        dp[0][i]=0;
+    }
+    for(int i=1;i<=s1;i++)
+    {
+        for(int j=1;j<=s2;j++)
+        {
+            if(a[i-1]==b[j-1])
+            dp[i][j]=1+dp[i-1][j-1];
+            else
+            dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+        }
+    }
+    printf("%d",dp[s1][s2]);
+}
