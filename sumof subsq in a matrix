@@ -1,0 +1,36 @@
+#include<stdio.h>
+int r,c;
+void check(int r1,int c1,int a[r][c],int k,int k1)
+{
+    int sum=0;
+    for(int i=r1;i<k;i++)
+    {
+        for(int j=c1;j<k1;j++)
+        sum=sum+a[i][j];
+    }
+    printf("%d ",sum);
+}
+
+int main()
+{
+    int a[3][3]={{1,2,3},
+                 {4,5,6},
+                 {7,8,9},};
+    int k=2;
+    int k1=k;
+    int sum=0;
+    for(int i=0;i<3;i++)
+    {
+        if(k<=3){
+        for(int j=0;j<3;j++)
+        {
+            r=3;c=3;
+            if(k1<=3)
+            check(i,j,a,k,k1);
+            k1++;
+        }
+        k1=2;
+        k++;
+        printf("\n");}
+    }
+}
