@@ -1,0 +1,23 @@
+#include<stdio.h>
+struct tim
+{
+    int hour;
+    int minutes;
+    int seconds;
+};
+int main()
+{
+    struct tim t1,t2,t3;
+    int s1,s2,s3;
+    scanf("%d %d %d",&t1.hour,&t1.minutes,&t1.seconds);
+    scanf("%d %d %d",&t2.hour,&t2.minutes,&t2.seconds);
+    s1=t1.hour*60*60+t1.minutes*60+t1.seconds;
+    s2=t2.hour*60*60+t2.minutes*60+t2.seconds;
+    s3=s1-s2;
+    t3.minutes=s3/60;
+    t3.hour=t3.minutes/60;
+    t3.minutes=t3.minutes%60;
+    t3.seconds=s3%60;
+    printf("%d:%d:%d ",t3.hour,t3.minutes,t3.seconds);
+    
+}
