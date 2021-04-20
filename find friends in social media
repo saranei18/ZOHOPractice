@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<string.h>
+typedef struct friends
+{
+    char name[20];
+    char list[10][20];
+    int no;
+}fr;
+fr f[10];
+
+void findfr(int n)
+{
+    int i,j,k,m;
+    int count;
+    for(i=0;i<n;i++)
+    {
+        m=f[i].no;
+        for(j=0;j<m;j++)
+        {
+            for(k=count=0;k<n;k++)
+            {
+                if(strcmp((f[i].list[j]),f[k].name)!=0)
+                count++;
+            }
+            if(count==n)
+            printf("%s ",f[i].list[j]);
+        }
+    }
+}
+
+int main()
+{
+    int n,m;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        scanf(" %s",f[i].name);
+        scanf("%d",&f[i].no);
+        m=f[i].no;
+        for(int j=0;j<m;j++)
+        {
+            scanf("%s",f[i].list[j]);
+        }
+    }
+    findfr(n);
+}
