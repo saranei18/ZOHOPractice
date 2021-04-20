@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<string.h>
+
+int check(int i,int j,char a[],int count)
+{
+    int c=0,c1=0,res=0;
+    for(int k=0;k<strlen(a)-count;k++)
+    {
+        int r1=k,r2=0;
+        while(a[r1]==a[r2]&&r2<j)
+        {
+            c++;
+            r1++;r2++;
+        }
+        if(c==count)
+        {
+            res=res+c;
+        }
+        c=0;
+    }
+    if(res==count)return 1;
+    else return 0;
+}
+
+int main()
+{
+    char a[200];
+    int count=0;
+    fgets(a,200,stdin);
+    int len=strlen(a);
+    for(int j=0;j<len;j++)
+    {
+        int i=j;
+        while(a[j]!=32&&j<len)
+        {
+            count++;
+            j++;
+        }
+        int ck=check(i,j,a,count);
+        int i1=i,j1=j;
+        if(ck)
+        {
+            while(i1<j1)
+            {
+                printf("%c",a[i1]);
+                i1++;
+            }
+            printf("\n");
+        }
+        count=0;
+    }
+}
