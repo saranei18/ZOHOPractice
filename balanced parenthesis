@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char a[20];
+    fgets(a,20,stdin);
+    int open=0,close=0;
+    int j=strlen(a)-1;
+    for(int i=0;i<strlen(a);i++,j--)
+    {
+        if(a[i]=='(')
+        open++;
+        if(a[i]==')')
+        open--;
+        
+        if(a[j]==')')
+        close++;
+        if(a[j]=='(')
+        close--;
+        
+        if(open<0)
+        a[i]=-1;
+        if(close<0)
+        a[j]=-1;
+    }
+    for(int i=0;i<strlen(a);i++)
+    {
+        if(a[i]!=-1)printf("%c",a[i]);
+    }
+}
