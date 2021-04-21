@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char a[]={"123"};
+    char one[11][20]={"","one","two","three","four","five","six","seven","eight","nine"};
+    char two[][20]={"","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"};
+    char three[][20]={"","Ten","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"};
+    int len=strlen(a);
+    if(len==1)
+    {
+        printf("%s",one[a[0]-'0']);
+    }
+    else if(len==2)
+    {
+        if(a[1]=='0') printf("%s",three[a[0]-'0']);
+        else if(a[0]=='1')printf("%s",two[a[1]-'0']);
+        else printf("%s %s",three[a[0]-'0'],one[a[1]-'0']);
+    }
+    else if(len==3)
+    {
+        printf("%s Hundred and %s %s",one[a[0]-'0'],three[a[1]-'0'],one[a[2]-'0']);
+    }
+    
+}
