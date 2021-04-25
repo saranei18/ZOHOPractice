@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<string.h>
+char a[4][4]={{'a','z','o','l'},
+              {'n','x','h','o'},
+              {'v','y','i','v'},
+              {'o','r','s','e'}};
+int k1=0;
+void check(char b[],int i,int j)
+{
+    if(i>4||j>4||a[i][j]!=b[k1])
+        return;
+    if(a[i][j]==b[k1])
+        k1++;
+    check(b,i,j+1);
+    check(b,i+1,j);
+}
+int main()
+{
+    char b[]={"oi"};
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<4;j++)
+        {
+            if(a[i][j]==b[0])
+            {
+                check(b,i,j);
+                if (k1==strlen(b))printf("Yes");
+                else printf("No");
+                exit(0);
+            }
+        }
+    }
+}
