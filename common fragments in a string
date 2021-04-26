@@ -1,0 +1,38 @@
+#include<iostream>
+#include<string.h>
+#include<unordered_set>
+using namespace std;
+int main()
+{
+    string s[3]={"My name is saran","My name hero","Everyday i do My exercise"};
+    string t[3][50];
+    int count=0;
+    for(int i=0;i<3;i++)
+    {
+        string temp=s[i];
+        count=0;
+        for(int j=0;j<s[i].size();j++)
+        {
+            if(temp[j]==' ')
+            {
+                count++;
+                continue;
+            }
+            t[i][count]+=temp[j];
+        }
+    }
+    unordered_multiset<string>ae;
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<=count;j++)
+        {
+            ae.insert(t[i][j]);
+        }
+    }
+    for(int i=0;i<=count;i++)
+    {
+        if(ae.count(t[0][i])==3)
+        cout<<t[0][i];
+    }
+    return 0;
+}
