@@ -1,0 +1,50 @@
+#include<vector>
+#include<utility>
+#include<queue>
+#include<map>
+using namespace std;
+/*
+// A binary tree node has data, pointer to left child and a pointer to right child
+struct TreeNode {
+    int data;
+    struct TreeNode* left;
+    struct TreeNode* right;
+    // Helper function that allocates a new node with the given data and NULL left and right pointers.
+    TreeNode(int number) {
+		data = number; 
+		left = NULL; 
+		right = NULL; 
+	}
+};
+*/
+map<int,int>m1;
+int hd=0;
+queue<struct TreeNode*>temp;
+vector<int>v1;
+vector<int> BottomView (struct TreeNode* root) 
+{
+	struct TreeNode*curr=root;
+    temp.push(root);
+    while(!temp.empty())
+    {
+        curr=temp.front();
+        m1[hd]=curr->data;
+        if(curr->left!=NULL)
+        {
+            temp.push(curr->left);
+            hd=hd+1;
+        }
+        if(curr->right!=NULL)
+        {
+            temp.push(curr->right);
+            hd=hd-1;
+        }
+        
+    }
+    for(auto i=m1.begin();i!=m1.end();i++)
+    {
+        v1.push_back(i->second);
+    }
+   
+    return v1;
+}
