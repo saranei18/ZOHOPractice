@@ -1,0 +1,46 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+vector<int>v1;
+/*void print(int *arr, int m, int n)
+{
+    int i, j;
+    for (i = 0; i < m; i++)
+      for (j = 0; j < n; j++)
+        printf("%d ", *((arr+i*n) + j));
+}*/
+void getans(int i,int j,int *arr)
+{
+	for(int i1=i;i1<2;i1++)
+	{
+		*((arr+i1*2)+j)=1;
+	}
+	for(int j1=j;j1<2;j1++)
+	{
+		*((arr+i*2)+j1)=1;
+	}
+}
+int main()
+{
+	
+	int a[2][2]={{1,0},
+				 {0,0}};
+	for(int i=0;i<2;i++)
+	{
+		for(int j=0;j<2;j++)
+		{
+			if(a[i][j]==1)
+			{
+				v1.push_back(i);
+				v1.push_back(j);
+			}
+		}
+	}
+	for(int i=0;i<v1.size();i=i+2)
+	{
+		getans(v1[i],v1[i+1],(int *)a);
+	}
+	for(int i=0;i<2;i++){
+	for(int j=0;j<2;j++){printf("%d ",a[i][j]);}printf("\n");}
+}
