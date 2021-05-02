@@ -1,0 +1,35 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+int main()
+{
+	string dictionary[] = {"mobile","samsung","sam","sung","man","mango",
+                           "icecream","and","go","i","like","ice","cream"};
+    string s="ilikemango";
+    int len=s.length();
+    int dp[len+1];
+	for(int i=0;i<=len;i++)
+	{
+		for(int j=0;j<=i;j++)
+		{
+			string w2check=s.substr(j,i+1);
+			for(int k=0;k<13;k++)
+			{
+			if(dictionary[k].compare(w2check)==0)
+			{
+				if(j>0)
+				{
+					dp[i]+=dp[j-1];
+				}
+				else
+				{
+					dp[i]+=1;
+				}
+			}
+			break;
+			}
+		}
+	}
+	printf("%d",dp[len-1]);                      
+    
+}
