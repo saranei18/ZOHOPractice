@@ -1,0 +1,29 @@
+#include<iostream>
+#include<string>
+#include<unordered_map>
+#include<utility>
+using namespace std;
+void getans(char nuts[],char bolts[],int n)
+{
+	unordered_map<char,int>hash;
+	for(int i=0;i<n;i++)
+	{
+		hash[nuts[i]]=i;
+	}
+	for(int i=0;i<n;i++)
+	{
+		if(hash.find(bolts[i])!=hash.end())
+		{
+			nuts[i]=bolts[i];
+		}
+	}
+	for(int i=0;i<n;i++)
+	printf("%c ",nuts[i]);
+}
+int main()
+{
+    char nuts[] = {'@', '#', '$', '%', '^', '&'};
+    char bolts[] = {'$', '%', '&', '^', '@', '#'};
+    int n=sizeof(nuts)/sizeof(nuts[0]);
+    getans(nuts,bolts,n);
+}
