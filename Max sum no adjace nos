@@ -1,0 +1,17 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main()
+{
+	int a[]={5,5,10,40,50,35};
+	int exc=0;
+	int inc=a[0];
+	int exnew=0;
+	for(int i=1;i<6;i++)
+	{
+		exnew=max(inc,exc);
+		inc=a[i]+exc;
+		exc=exnew;
+	}
+	printf("%d",max(inc,exc));
+}
