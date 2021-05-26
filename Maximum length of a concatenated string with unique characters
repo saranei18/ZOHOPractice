@@ -1,0 +1,60 @@
+class Solution {
+public:
+    int max_length=0;
+    bool is_valid(string s,string s1)
+    {
+        for(int i=0;i<s.length();i++)
+        {
+            for(int j=0;j<s1.length();j++)
+            {
+                if(s[i]==s1[j])return false;
+            }
+        }
+        return true;
+    }
+
+    bool is_good(string s)
+    {
+        sort(s.begin(),s.end());
+        for(int i=1;i<s.length();i++)
+        {
+            if(s[i]==s[i-1])return false;
+        }
+        return true;
+    }
+    
+    void permute(string s,int pos,vector<string>ques,int length)
+    {
+        if(pos>=ques.size())return;
+        max_length=max(max_length,length);
+        for(int i=pos+1;i<ques.size();i++)
+        {
+            if(is_valid(s,ques[i]))
+            {
+                if(is_good(ques[i]))
+                {//choose
+                    string temp=s;
+                    length+=ques[i].size();
+                    s+=ques[i];
+                    //explore
+                    permute(s,i,ques,length);
+                    //unchoose
+                    s=temp;
+                    length-=ques[i].size();
+                 }
+            }
+         }
+    }
+    int maxLength(vector<string>& ques) 
+    {
+        for(int i=0;i<ques.size();i++)
+        {
+            if(is_good(ques[i]))
+            {
+                string s=ques[i];
+                permute(s,i,ques,s.length());
+            }
+        }
+        return max_length;
+    }
+};
