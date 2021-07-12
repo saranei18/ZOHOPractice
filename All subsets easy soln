@@ -1,0 +1,55 @@
+/*
+Subset
+Finding all subsets of a given set  
+Find all the subsets of a given set.
+Input: 
+S = {a, b, c, d}
+Output:
+{}, {a} , {b}, {c}, {d}, {a,b}, {a,c},
+{a,d}, {b,c}, {b,d}, {c,d}, {a,b,c}, 
+{a,b,d}, {a,c,d}, {b,c,d}, {a,b,c,d}
+
+0 ->  0000  -> {}
+1 ->  0001  -> {a}
+2 ->  0010  -> {b}
+3 ->  0011  -> {a,b}
+4 ->  0100  -> {c}
+5 ->  0101  -> {a,c}
+6 ->  0110  -> {b,c}
+7 ->  0111  -> {a,b,c}
+8 ->  1000  -> {d}
+9 ->  1001  -> {a,d}
+10->  1010  -> {b,d}
+11->  1011  -> {a,b,d}
+12->  1100  -> {c,d}
+13->  1101  -> {a,c,d}
+14->  1110  -> {b,c,d}
+15->  1111  -> {a,b,c,d}
+
+*/
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    char str[100];
+    scanf("%s",str);
+    int len = strlen(str),itr,ctr;
+    for(itr=0;itr<(1<<len);itr++)
+    {
+        printf("{ ");
+        for(ctr=0;ctr<len;ctr++)
+        {
+            if((itr & (1<<ctr)) > 0)
+                printf("%c ",str[ctr]);
+        }
+        printf("}\n");
+    }
+    return 0;
+}
+
+
+
+
+
+
+
