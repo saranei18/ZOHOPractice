@@ -1,0 +1,88 @@
+/*
+N=10
+2 3 4 2 1 2 3 1 4 1 
+o/p:
+2 2 2 1 1 1 3 3 4 4 
+
+
+val[0] = 2   
+freq[0] = 3 
+
+val[1] = 3 
+freq[1] = 2 
+
+val[2] = 4
+freq[2] = 2 
+
+val[3] = 1 
+freq[3] = 3 
+
+val[0] = 2   
+freq[0] = 3 
+
+val[1] = 1 
+freq[1] = 3 
+
+val[2] = 3
+freq[2] = 2 
+
+val[3] = 4 
+freq[3] = 2
+*/
+
+#include <stdio.h>
+int main()
+{
+    int N,ind,arr[100],val[100],freq[100],itr=0,count=1,ctr,temp;
+    scanf("%d",&N);
+    for(ind=0;ind<N;ind++)
+        scanf("%d",&arr[ind]);
+    for(ind=0;ind<N;ind++)
+    {
+        if(arr[ind]!=-1)
+        {
+            val[itr] = arr[ind];
+            for(ctr=ind+1;ctr<N;ctr++)
+            {
+                if(arr[ind]==arr[ctr])
+                {
+                    count++;
+                    arr[ctr]=-1;
+                }
+            }
+            freq[itr] = count;
+            itr++;
+            count = 1;
+        }
+    }
+    for(ind=0;ind<itr;ind++)
+    {
+        for(ctr=0;ctr<itr-1-ind;ctr++)
+        {
+            if(freq[ctr]<freq[ctr+1])
+            {
+                temp =freq[ctr];
+                freq[ctr] = freq[ctr+1];
+                freq[ctr+1] = temp;
+                temp = val[ctr];
+                val[ctr]= val[ctr+1];
+                val[ctr+1] = temp;
+            }
+        }
+    }
+    for(ind=0;ind<itr;ind++)
+    {
+        for(ctr=1;ctr<=freq[ind];ctr++)
+            printf("%d ",val[ind]);
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+
+
